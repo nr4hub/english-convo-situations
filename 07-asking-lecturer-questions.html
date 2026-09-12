@@ -118,11 +118,13 @@ nav.toc.drawer-open .drawer-close{ display:flex; }
 
 .wrap-idx{ max-width:1100px; margin:-56px auto 60px; padding:0 24px; }
 
-.layout{ max-width:1180px; margin:-8px auto 60px; padding:0 24px; display:grid; grid-template-columns:240px 1fr; gap:32px; align-items:start; }
-nav.toc{ background:var(--paper); border-radius:16px; box-shadow:var(--card-shadow); padding:16px 8px; position:sticky; top:20px; max-height:calc(100vh - 40px); overflow:auto; }
+.layout{ max-width:1180px; margin:-8px auto 60px; padding:0 24px; display:grid; grid-template-columns:250px 1fr; gap:32px; align-items:start; }
+nav.toc{ background:var(--paper); border-radius:16px; box-shadow:var(--card-shadow); padding:18px 10px; position:sticky; top:20px; max-height:calc(100vh - 40px); overflow:auto; }
 nav.toc .toc-head{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--sub); padding:6px 14px 10px; font-weight:500; display:flex; align-items:center; justify-content:space-between; }
 nav.toc a{ display:block; padding:9px 14px; border-radius:10px; color:var(--ink); text-decoration:none; font-size:13.5px; border-left:3px solid transparent; }
 nav.toc a:hover{background:#2c2d30;}
+nav.toc a.active{background:#2a3a55; color:#a8c7fa; border-left-color:var(--blue); font-weight:500;}
+nav.toc .toc-divider{ margin:10px 10px 6px; border-top:1px solid var(--line); padding-top:10px; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--sub); font-weight:500; }
 main{min-width:0;}
 
 /* ===== In-page "find" search (lives inside nav.toc — shared by desktop sidebar + mobile drawer) ===== */
@@ -157,9 +159,6 @@ main{min-width:0;}
 mark.search-hit{ background:#fdd663; color:#131417; padding:0 2px; border-radius:3px; }
 mark.search-hit.active{ background:#ff9d45; box-shadow:0 0 0 2px rgba(255,157,69,.35); }
 
-nav.toc .toc-num{
-  font-family:'Roboto Mono',monospace; font-size:11px; color:var(--sub); margin-right:2px;
-}
 
 .section{ background:var(--paper); border-radius:18px; box-shadow:var(--card-shadow); padding:30px 32px; margin-bottom:24px; scroll-margin-top:20px; position: sticky;}
 .section .kicker{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
@@ -299,7 +298,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
 
       <div class="hero-find-col">
         <div class="site-search find-page-search" id="heroFindWrap">
-          <span class="s-icon">📍</span>
+          <span class="s-icon">🔍</span>
           <input type="text" id="heroFindInput" placeholder="Find on this page…" autocomplete="off">
           <button class="s-clear" id="heroFindClear" aria-label="Clear search">✕</button>
         </div>
@@ -325,7 +324,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
     <div class="toc-head">On this page <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button></div>
     <div class="toc-search">
       <div class="toc-search-box">
-        <span class="s-icon">📍</span>
+        <span class="s-icon">🔍</span>
         <input type="text" id="pageSearchInput" placeholder="Find on this page…" autocomplete="off">
         <button class="s-clear" id="pageSearchClear" aria-label="Clear search">✕</button>
       </div>
@@ -337,7 +336,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
         </div>
       </div>
     </div>
-    <a href="#situation"><span class="toc-num">1.</span> The Situation</a><a href="#examples"><span class="toc-num">2.</span> Five Examples</a><a href="#vocabulary"><span class="toc-num">3.</span> Vocabulary</a><a href="#grammar"><span class="toc-num">4.</span> Grammar Focus</a><a href="#mistakes"><span class="toc-num">5.</span> Common Mistakes</a><a href="#practice"><span class="toc-num">6.</span> Practice Prompts</a>
+    <a href="#situation">1. The Situation</a><a href="#examples">2. Five Examples</a><a href="#vocabulary">3. Vocabulary</a><a href="#grammar">4. Grammar Focus</a><a href="#mistakes">5. Common Mistakes</a><a href="#practice">6. Practice Prompts</a>
   </nav>
   <main>
     <section class="section" id="situation">
@@ -437,7 +436,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
       <p class="lede">Practice each of these five situations out loud until they feel natural.</p>
       <div class="chip-row"><span class="chip">Ask to repeat something</span><span class="chip">Ask for clarification</span><span class="chip">Ask permission to leave early</span><span class="chip">Ask about a deadline</span><span class="chip">Ask how something is graded</span></div>
     </section>
-    <footer>Spoken English Practice — Neroshana Gunasekara · Personal reference site
+    <footer>Spoken English Practice — Personal reference site
       <br><a class="back-top" href="#toc">Back to top ↑</a>
     </footer>
   </main>
@@ -449,6 +448,38 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
   <a class="path-btn next" href="08-solo-presentation.html"><span class="p-text"><span class="p-kicker">Next</span><span class="p-title">08. Solo Presentation</span></span><span class="p-arrow">→</span></a>
 </div>
 
+<script>
+  // ===== TOC scroll-spy — highlights the active section link as you scroll =====
+  const sections = document.querySelectorAll('.section[id]');
+  const tocLinks = document.querySelectorAll('nav.toc a[href^="#"]');
+  const tocMap = {};
+  tocLinks.forEach(l => tocMap[l.getAttribute('href').slice(1)] = l);
+
+  const tocObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      if(entry.isIntersecting){
+        tocLinks.forEach(l => l.classList.remove('active'));
+        if(tocMap[id]) tocMap[id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(s => tocObserver.observe(s));
+
+  // ===== Bottom-of-page fallback — last section is short so the observer never fires for it =====
+  window.addEventListener('scroll', () => {
+    const scrollBottom = window.scrollY + window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+    if(scrollBottom >= pageHeight - 60){
+      const lastLink = tocLinks[tocLinks.length - 1];
+      if(lastLink && !lastLink.classList.contains('active')){
+        tocLinks.forEach(l => l.classList.remove('active'));
+        lastLink.classList.add('active');
+      }
+    }
+  }, { passive: true });
+</script>
 <script>
   window.__NAV_TOPICS__ = [{"num": "01", "title": "Talking About Your Daily Routine", "href": "01-daily-routine.html"}, {"num": "02", "title": "Asking What Someone Is Doing", "href": "02-asking-whats-up.html"}, {"num": "03", "title": "Asking APIIT About Your Degree & Next Intake", "href": "03-asking-apiit-about-degree.html"}, {"num": "04", "title": "Introducing Yourself to the Whole Class", "href": "04-self-introduction-class.html"}, {"num": "05", "title": "Asking a New Classmate How They're Doing", "href": "05-asking-classmate-status.html"}, {"num": "06", "title": "Introducing Yourself Privately to a Classmate", "href": "06-introducing-to-classmate.html"}, {"num": "07", "title": "Asking Your Lecturer Questions", "href": "07-asking-lecturer-questions.html"}, {"num": "08", "title": "Giving a Solo PowerPoint Presentation", "href": "08-solo-presentation.html"}, {"num": "09", "title": "Giving a Team PowerPoint Presentation", "href": "09-team-presentation.html"}, {"num": "10", "title": "Buying Something at a Supermarket", "href": "10-supermarket-shopping.html"}, {"num": "11", "title": "Dealing With the Train Station", "href": "11-train-station.html"}, {"num": "12", "title": "Withdrawing Money at a Bank Counter", "href": "12-bank-withdrawal.html"}, {"num": "13", "title": "Reporting an Internet Issue to Hutch", "href": "13-hutch-customer-service.html"}];
   window.__CURRENT_HREF__ = "07-asking-lecturer-questions.html";

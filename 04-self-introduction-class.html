@@ -118,11 +118,13 @@ nav.toc.drawer-open .drawer-close{ display:flex; }
 
 .wrap-idx{ max-width:1100px; margin:-56px auto 60px; padding:0 24px; }
 
-.layout{ max-width:1180px; margin:-8px auto 60px; padding:0 24px; display:grid; grid-template-columns:240px 1fr; gap:32px; align-items:start; }
-nav.toc{ background:var(--paper); border-radius:16px; box-shadow:var(--card-shadow); padding:16px 8px; position:sticky; top:20px; max-height:calc(100vh - 40px); overflow:auto; }
+.layout{ max-width:1180px; margin:-8px auto 60px; padding:0 24px; display:grid; grid-template-columns:250px 1fr; gap:32px; align-items:start; }
+nav.toc{ background:var(--paper); border-radius:16px; box-shadow:var(--card-shadow); padding:18px 10px; position:sticky; top:20px; max-height:calc(100vh - 40px); overflow:auto; }
 nav.toc .toc-head{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--sub); padding:6px 14px 10px; font-weight:500; display:flex; align-items:center; justify-content:space-between; }
 nav.toc a{ display:block; padding:9px 14px; border-radius:10px; color:var(--ink); text-decoration:none; font-size:13.5px; border-left:3px solid transparent; }
 nav.toc a:hover{background:#2c2d30;}
+nav.toc a.active{background:#2a3a55; color:#a8c7fa; border-left-color:var(--blue); font-weight:500;}
+nav.toc .toc-divider{ margin:10px 10px 6px; border-top:1px solid var(--line); padding-top:10px; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--sub); font-weight:500; }
 main{min-width:0;}
 
 /* ===== In-page "find" search (lives inside nav.toc — shared by desktop sidebar + mobile drawer) ===== */
@@ -157,9 +159,6 @@ main{min-width:0;}
 mark.search-hit{ background:#fdd663; color:#131417; padding:0 2px; border-radius:3px; }
 mark.search-hit.active{ background:#ff9d45; box-shadow:0 0 0 2px rgba(255,157,69,.35); }
 
-nav.toc .toc-num{
-  font-family:'Roboto Mono',monospace; font-size:11px; color:var(--sub); margin-right:2px;
-}
 
 .section{ background:var(--paper); border-radius:18px; box-shadow:var(--card-shadow); padding:30px 32px; margin-bottom:24px; scroll-margin-top:20px; position: sticky;}
 .section .kicker{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
@@ -299,7 +298,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
 
       <div class="hero-find-col">
         <div class="site-search find-page-search" id="heroFindWrap">
-          <span class="s-icon">📍</span>
+          <span class="s-icon">🔍</span>
           <input type="text" id="heroFindInput" placeholder="Find on this page…" autocomplete="off">
           <button class="s-clear" id="heroFindClear" aria-label="Clear search">✕</button>
         </div>
@@ -325,7 +324,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
     <div class="toc-head">On this page <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button></div>
     <div class="toc-search">
       <div class="toc-search-box">
-        <span class="s-icon">📍</span>
+        <span class="s-icon">🔍</span>
         <input type="text" id="pageSearchInput" placeholder="Find on this page…" autocomplete="off">
         <button class="s-clear" id="pageSearchClear" aria-label="Clear search">✕</button>
       </div>
@@ -337,7 +336,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
         </div>
       </div>
     </div>
-    <a href="#situation"><span class="toc-num">1.</span> The Situation</a><a href="#phrases"><span class="toc-num">2.</span> Key Phrases</a><a href="#conversation"><span class="toc-num">3.</span> Sample Conversation</a><a href="#vocabulary"><span class="toc-num">4.</span> Vocabulary</a><a href="#grammar"><span class="toc-num">5.</span> Grammar Focus</a><a href="#mistakes"><span class="toc-num">6.</span> Common Mistakes</a><a href="#practice"><span class="toc-num">7.</span> Practice Prompts</a>
+    <a href="#situation">1. The Situation</a><a href="#phrases">2. Key Phrases</a><a href="#conversation">3. Sample Conversation</a><a href="#vocabulary">4. Vocabulary</a><a href="#grammar">5. Grammar Focus</a><a href="#mistakes">6. Common Mistakes</a><a href="#practice">7. Practice Prompts</a>
   </nav>
   <main>
     <section class="section" id="situation">
@@ -351,7 +350,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
         <div class="kicker-left"><div class="num-badge" style="background:var(--green)">2</div><h2>Key phrases</h2></div>
       </div>
       <p class="lede">A ready-to-use structure for a confident classroom introduction.</p>
-      <ul class="phrase-list"><li><span class="en">Good morning everyone, my name is Neroshana Gunasekara.</span><span class="si-inline si">සුබ උදෑසනක් සැමට, මගේ නම නෙරෝෂාන ගුණසේකර.</span></li><li><span class="en">I'm from Gonapinuwala, and I travel here every day by bus and train.</span><span class="si-inline si">මම ගොනපිනුවලින්, හැම දාම බස් එකෙන් සහ දුම්රියෙන් මෙතනට එනවා.</span></li><li><span class="en">I have a background in Graphic Design and UI/UX as a freelancer.</span><span class="si-inline si">මට Graphic Design සහ UI/UX වල freelance පරිත්‍යාග පසුබිමක් තියෙනවා.</span></li><li><span class="en">I'm here to study Cybersecurity because I want to build a career in that field.</span><span class="si-inline si">මම මෙතන ඉන්නේ Cybersecurity ඉගෙන ගන්න, මොකද මට ඒ ක්ෂේත්‍රයේ career එකක් හදාගන්න ඕන.</span></li><li><span class="en">In my free time, I enjoy web development and design work.</span><span class="si-inline si">නිදහස් වේලාවේදී මම web development සහ design වැඩ කරන්න කැමතියි.</span></li><li><span class="en">I'm looking forward to learning with all of you this semester.</span><span class="si-inline si">මම මේ semester එකේදී ඔයාල හැමෝම එක්ක ඉගෙන ගන්න බලාපොරොත්තුවෙන් ඉන්නවා.</span></li></ul>
+      <ul class="phrase-list"><li><span class="en">Good morning everyone, my name is Nero"si-inline si">සුබ උදෑසනක් සැමට, මගේ නම නෙරෝෂාන ගුණසේකර.</span></li><li><span class="en">I'm from Gonapinuwala, and I travel here every day by bus and train.</span><span class="si-inline si">මම ගොනපිනුවලින්, හැම දාම බස් එකෙන් සහ දුම්රියෙන් මෙතනට එනවා.</span></li><li><span class="en">I have a background in Graphic Design and UI/UX as a freelancer.</span><span class="si-inline si">මට Graphic Design සහ UI/UX වල freelance පරිත්‍යාග පසුබිමක් තියෙනවා.</span></li><li><span class="en">I'm here to study Cybersecurity because I want to build a career in that field.</span><span class="si-inline si">මම මෙතන ඉන්නේ Cybersecurity ඉගෙන ගන්න, මොකද මට ඒ ක්ෂේත්‍රයේ career එකක් හදාගන්න ඕන.</span></li><li><span class="en">In my free time, I enjoy web development and design work.</span><span class="si-inline si">නිදහස් වේලාවේදී මම web development සහ design වැඩ කරන්න කැමතියි.</span></li><li><span class="en">I'm looking forward to learning with all of you this semester.</span><span class="si-inline si">මම මේ semester එකේදී ඔයාල හැමෝම එක්ක ඉගෙන ගන්න බලාපොරොත්තුවෙන් ඉන්නවා.</span></li></ul>
     </section><section class="section" id="conversation">
       <div class="kicker">
         <div class="kicker-left"><div class="num-badge" style="background:var(--red)">3</div><h2>Sample conversation</h2></div>
@@ -364,7 +363,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
           <div class="msg">Good morning class. Since this is our first session together, let's go around the room — please introduce yourselves briefly.<span class="si-line si">සුබ උදෑසනක් class එකට. මේක අපේ පළමු session එක නිසා, කාමරය වටේ යමු — කරුණාකර කෙටියෙන් තමන්ව හඳුන්වා දෙන්න.</span></div>
         </div><div class="dline b">
           <div class="who">You</div>
-          <div class="msg">Good morning everyone. My name is Neroshana Gunasekara, and I'm from Gonapinuwala.<span class="si-line si">සුබ උදෑසනක් සැමට. මගේ නම නෙරෝෂාන ගුණසේකර, මම ගොනපිනුවලින්.</span></div>
+          <div class="msg">Good morning everyone. My name is Nero, and I'm from Hikkaduwa.<span class="si-line si">සුබ උදෑසනක් සැමට. මගේ නම නෙරෝෂ, මම ගොනපිනුවලින්.</span></div>
         </div><div class="dline b">
           <div class="who">You</div>
           <div class="msg">I have a background in Graphic Design and UI/UX Web Development, and I've been working as a freelancer for a while.<span class="si-line si">මට Graphic Design සහ UI/UX Web Development වල පසුබිමක් තියෙනවා, ටික කාලයක් freelancer කෙනෙක් විදිහට වැඩ කළා.</span></div>
@@ -376,7 +375,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
           <div class="msg">I'm really looking forward to learning with everyone this semester. Thank you.<span class="si-line si">මම මේ semester එකේදී ඔයාල හැමෝම එක්ක ඉගෙන ගන්න හරිම බලාපොරොත්තුවෙන් ඉන්නවා. ස්තූතියි.</span></div>
         </div><div class="dline a">
           <div class="who">Lecturer</div>
-          <div class="msg">Thank you, Neroshana. Great mix of design and security — welcome aboard.<span class="si-line si">ස්තූතියි, නෙරෝෂාන. design සහ security එකට තියෙන හොඳ මිශ්‍රණයක් — සාදරයෙන් පිළිගන්නවා.</span></div>
+          <div class="msg">Thank you, Nero. Great mix of design and security — welcome aboard.<span class="si-line si">ස්තූතියි, නෙරෝෂාන. design සහ security එකට තියෙන හොඳ මිශ්‍රණයක් — සාදරයෙන් පිළිගන්නවා.</span></div>
         </div>
       </div>
     </section><section class="section" id="vocabulary">
@@ -393,7 +392,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
       <div class="grammar-point">
           <div class="g-name">Present Simple for facts about yourself<span class="g-tag">Core tense</span></div>
           <p>Use the present simple for facts that are generally true about you — your name, background, and reason for studying.</p>
-          <ul><li><span class="ex-en">My name is Neroshana.</span><span class="ex-si si">මගේ නම නෙරෝෂාන.</span></li><li><span class="ex-en">I have a background in design.</span><span class="ex-si si">මට design පසුබිමක් තියෙනවා.</span></li></ul>
+          <ul><li><span class="ex-en">My name is Nero.</span><span class="ex-si si">මගේ නම නෙරෝෂ.</span></li><li><span class="ex-en">I have a background in design.</span><span class="ex-si si">මට design පසුබිමක් තියෙනවා.</span></li></ul>
         </div><div class="grammar-point">
           <div class="g-name">Present Perfect — experience up to now<span class="g-tag">Grammar point</span></div>
           <p>Use <b>have/has + past participle</b> to talk about experience that started in the past and connects to now.</p>
@@ -410,7 +409,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
       <p class="lede">Small slips that are easy to fix once you notice them.</p>
       <div class="mistake-table-wrap"><table class="mistake-table">
       <thead><tr><th>Common mistake</th><th>Correct version</th><th>Why</th></tr></thead>
-      <tbody><tr><td class="wrong">I am Neroshana.</td><td class="right">My name is Neroshana. / I'm Neroshana.</td><td class="note">‘I am [name]’ alone can sound abrupt; add ‘my name is’ for introductions.</td></tr><tr><td class="wrong">I am working as freelancer since two years.</td><td class="right">I've been working as a freelancer <b>for</b> two years.</td><td class="note">Use present perfect continuous with ‘for + duration’, not present continuous with ‘since’ + duration.</td></tr><tr><td class="wrong">I looking forward to learn with you.</td><td class="right">I'm looking forward to <b>learning</b> with you.</td><td class="note">‘Looking forward to’ is followed by the -ing form, not the base verb.</td></tr><tr><td class="wrong">I have interest on web development.</td><td class="right">I have interest <b>in</b> web development. / I'm interested <b>in</b> web development.</td><td class="note">Use the preposition ‘in’, not ‘on’, after interest/interested.</td></tr></tbody>
+      <tbody><tr><td class="wrong">I am Nero.</td><td class="right">My name is Nero. / I'm Nero.</td><td class="note">‘I am [name]’ alone can sound abrupt; add ‘my name is’ for introductions.</td></tr><tr><td class="wrong">I am working as freelancer since two years.</td><td class="right">I've been working as a freelancer <b>for</b> two years.</td><td class="note">Use present perfect continuous with ‘for + duration’, not present continuous with ‘since’ + duration.</td></tr><tr><td class="wrong">I looking forward to learn with you.</td><td class="right">I'm looking forward to <b>learning</b> with you.</td><td class="note">‘Looking forward to’ is followed by the -ing form, not the base verb.</td></tr><tr><td class="wrong">I have interest on web development.</td><td class="right">I have interest <b>in</b> web development. / I'm interested <b>in</b> web development.</td><td class="note">Use the preposition ‘in’, not ‘on’, after interest/interested.</td></tr></tbody>
     </table></div>
     </section><section class="section" id="practice">
       <div class="kicker">
@@ -419,7 +418,7 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
       <p class="lede">Practice saying your own introduction out loud, using this order.</p>
       <div class="chip-row"><span class="chip">Say your name clearly</span><span class="chip">Where you're from</span><span class="chip">Your background</span><span class="chip">Why you're studying this course</span><span class="chip">One personal interest</span></div><div class="callout tip"><b>Confidence tip:</b> Keep it under 30 seconds. Smile, make eye contact, and speak a little slower than feels natural.</div>
     </section>
-    <footer>Spoken English Practice — Neroshana Gunasekara · Personal reference site
+    <footer>Spoken English Practice — Personal reference site
       <br><a class="back-top" href="#toc">Back to top ↑</a>
     </footer>
   </main>
@@ -431,6 +430,38 @@ footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50
   <a class="path-btn next" href="05-asking-classmate-status.html"><span class="p-text"><span class="p-kicker">Next</span><span class="p-title">05. New Classmate Status</span></span><span class="p-arrow">→</span></a>
 </div>
 
+<script>
+  // ===== TOC scroll-spy — highlights the active section link as you scroll =====
+  const sections = document.querySelectorAll('.section[id]');
+  const tocLinks = document.querySelectorAll('nav.toc a[href^="#"]');
+  const tocMap = {};
+  tocLinks.forEach(l => tocMap[l.getAttribute('href').slice(1)] = l);
+
+  const tocObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      if(entry.isIntersecting){
+        tocLinks.forEach(l => l.classList.remove('active'));
+        if(tocMap[id]) tocMap[id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(s => tocObserver.observe(s));
+
+  // ===== Bottom-of-page fallback — last section is short so the observer never fires for it =====
+  window.addEventListener('scroll', () => {
+    const scrollBottom = window.scrollY + window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+    if(scrollBottom >= pageHeight - 60){
+      const lastLink = tocLinks[tocLinks.length - 1];
+      if(lastLink && !lastLink.classList.contains('active')){
+        tocLinks.forEach(l => l.classList.remove('active'));
+        lastLink.classList.add('active');
+      }
+    }
+  }, { passive: true });
+</script>
 <script>
   window.__NAV_TOPICS__ = [{"num": "01", "title": "Talking About Your Daily Routine", "href": "01-daily-routine.html"}, {"num": "02", "title": "Asking What Someone Is Doing", "href": "02-asking-whats-up.html"}, {"num": "03", "title": "Asking APIIT About Your Degree & Next Intake", "href": "03-asking-apiit-about-degree.html"}, {"num": "04", "title": "Introducing Yourself to the Whole Class", "href": "04-self-introduction-class.html"}, {"num": "05", "title": "Asking a New Classmate How They're Doing", "href": "05-asking-classmate-status.html"}, {"num": "06", "title": "Introducing Yourself Privately to a Classmate", "href": "06-introducing-to-classmate.html"}, {"num": "07", "title": "Asking Your Lecturer Questions", "href": "07-asking-lecturer-questions.html"}, {"num": "08", "title": "Giving a Solo PowerPoint Presentation", "href": "08-solo-presentation.html"}, {"num": "09", "title": "Giving a Team PowerPoint Presentation", "href": "09-team-presentation.html"}, {"num": "10", "title": "Buying Something at a Supermarket", "href": "10-supermarket-shopping.html"}, {"num": "11", "title": "Dealing With the Train Station", "href": "11-train-station.html"}, {"num": "12", "title": "Withdrawing Money at a Bank Counter", "href": "12-bank-withdrawal.html"}, {"num": "13", "title": "Reporting an Internet Issue to Hutch", "href": "13-hutch-customer-service.html"}];
   window.__CURRENT_HREF__ = "04-self-introduction-class.html";
