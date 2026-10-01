@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>15 — Explaining Your Website in a Viva — Spoken English Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#8ab4f8; --red:#f28b82; --yellow:#fdd663; --green:#81c995; --purple:#c58af9;
+  --ink:#e8eaed; --sub:#9aa0a6; --paper:#232427; --bg:#131417; --line:#3c4043;
+  --card-shadow: 0 1px 2px rgba(0,0,0,.5), 0 2px 10px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{ margin:0; font-family:'Roboto', Arial, sans-serif; background:var(--bg); color:var(--ink); line-height:1.65; overflow-x:hidden; }
+h1,h2,h3,.slide-title{ font-family:'Google Sans','Roboto',Arial,sans-serif; }
+a{ color:inherit; }
+.si{ font-family:'Noto Sans Sinhala','Roboto',sans-serif; }
+
+.mobile-bar{ display:none; position:sticky; top:0; z-index:40; align-items:center; justify-content:space-between; background:var(--paper); border-bottom:1px solid var(--line); padding:12px 16px; }
+.mobile-bar .m-title{ font-family:'Google Sans',sans-serif; font-weight:700; font-size:14.5px; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.menu-btn{ display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:10px; border:1px solid var(--line); background:var(--paper); flex:none; cursor:pointer; padding:0; }
+.menu-btn span, .menu-btn span::before, .menu-btn span::after{ content:""; display:block; width:18px; height:2px; background:var(--ink); position:relative; transition:transform .2s ease, opacity .2s ease; }
+.menu-btn span::before{ position:absolute; top:-6px; } .menu-btn span::after{ position:absolute; top:6px; }
+.menu-btn[aria-expanded="true"] span{ background:transparent; }
+.menu-btn[aria-expanded="true"] span::before{ top:0; transform:rotate(45deg); background:var(--ink); }
+.menu-btn[aria-expanded="true"] span::after{ top:0; transform:rotate(-45deg); background:var(--ink); }
+.toc-backdrop{ display:none; position:fixed; inset:0; background:rgba(32,33,36,.45); z-index:45; }
+.toc-backdrop.show{ display:block; }
+.drawer-close{ display:none; width:30px; height:30px; border-radius:8px; border:1px solid var(--line); background:var(--paper); align-items:center; justify-content:center; cursor:pointer; font-size:16px; line-height:1; color:var(--sub); flex:none; }
+nav.toc.drawer-open .drawer-close{ display:flex; }
+@keyframes slideIn{ from{ transform:translateX(-100%); opacity:.4; } to{ transform:translateX(0); opacity:1; } }
+
+.hero{ background:linear-gradient(120deg,#1a73e8 0%, #7B61FF 45%, #EA4335 100%); color:#fff; padding:56px 24px 40px; position:relative; overflow:hidden; }
+.hero::after{ content:""; position:absolute; right:-60px; top:-60px; width:280px;height:280px;border-radius:50%; background:rgba(255,255,255,.08); pointer-events:none; }
+.hero::before{ content:""; position:absolute; left:10%; bottom:-120px; width:220px;height:220px;border-radius:50%; background:rgba(255,255,255,.07); pointer-events:none; }
+.hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.eyebrow{ display:inline-block; font-size:12px; letter-spacing:.14em; text-transform:uppercase; background:rgba(255,255,255,.18); padding:6px 12px; border-radius:20px; margin-bottom:18px; font-weight:500; }
+.hero h1{font-size:32px; margin:0 0 12px; font-weight:700; line-height:1.25;}
+.hero p.lead{font-size:16px; max-width:700px; opacity:.95; margin:0;}
+.hero-meta{display:flex; gap:20px; flex-wrap:wrap; font-size:13px; opacity:.9; margin-top:16px;}
+.hero-meta span{display:flex; align-items:center; gap:7px;}
+.dot{width:6px;height:6px;border-radius:50%;background:#fff;display:inline-block; flex:none;}
+
+.hero-search-row{ margin-top:22px; display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap; }
+
+.site-search{ position:relative; z-index:2; flex:1 1 300px; }
+.site-search input{
+  width:100%; padding:13px 16px 13px 44px; border-radius:14px;
+  border:1px solid rgba(255,255,255,.32); background:rgba(255,255,255,.14);
+  color:#fff; font-size:14.5px; backdrop-filter:blur(6px); box-sizing:border-box;
+}
+.site-search input::placeholder{ color:rgba(255,255,255,.78); }
+.site-search input:focus{ outline:none; background:rgba(255,255,255,.22); border-color:#fff; }
+.site-search .s-icon{
+  position:absolute; left:15px; top:22px; transform:translateY(-50%);
+  font-size:14px; opacity:.85; pointer-events:none;
+}
+.site-search .s-clear{
+  position:absolute; right:8px; top:22px; transform:translateY(-50%);
+  width:26px; height:26px; border-radius:8px; border:none; background:rgba(255,255,255,.16);
+  color:#fff; font-size:13px; cursor:pointer; display:none; align-items:center; justify-content:center;
+}
+.site-search.has-query .s-clear{ display:flex; }
+.site-search .s-dropdown{
+  display:none; position:absolute; top:calc(100% + 8px); left:0; right:0;
+  background:var(--paper); border:1px solid var(--line); border-radius:14px;
+  box-shadow:var(--card-shadow); max-height:320px; overflow:auto; padding:6px;
+}
+.site-search .s-dropdown.show{ display:block; }
+.site-search .s-item{
+  display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:9px;
+  color:var(--ink); text-decoration:none; font-size:13.5px; cursor:pointer;
+}
+.site-search .s-item:hover, .site-search .s-item.hl{ background:#2c2d30; }
+.site-search .s-item .s-num{
+  font-family:'Roboto Mono',monospace; font-size:11px; color:var(--sub);
+  background:#1a1b1e; border-radius:6px; padding:2px 6px; flex:none; min-width:24px; text-align:center;
+}
+.site-search .s-empty{ padding:14px 10px; font-size:13px; color:var(--sub); text-align:center; }
+
+.hero-find-col{ flex:1 1 300px; }
+.hero-find-col .site-search.find-page-search{ max-width:none; }
+.find-page-nav{
+  display:none; align-items:center; justify-content:space-between; gap:8px;
+  margin-top:8px; font-size:12px; color:rgba(255,255,255,.85);
+}
+.find-page-nav.show{ display:flex; }
+.find-page-nav .snav-btns{ display:flex; gap:6px; }
+.find-page-nav button{
+  width:26px; height:26px; border-radius:8px; border:1px solid rgba(255,255,255,.32);
+  background:rgba(255,255,255,.14); color:#fff; font-size:13px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.find-page-nav button:hover{ background:rgba(255,255,255,.24); }
+.find-page-nav button:disabled{ opacity:.4; cursor:default; }
+
+.path-nav{ max-width:1100px; margin:26px auto 0; position:relative; z-index:1; display:grid; grid-template-columns:1fr auto 1fr; gap:12px; align-items:stretch; }
+.path-btn{ display:flex; align-items:center; gap:10px; text-decoration:none; color:#fff; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.28); border-radius:14px; padding:10px 16px; backdrop-filter:blur(6px); transition:background .15s ease, transform .15s ease; }
+.path-btn:hover{ background:rgba(255,255,255,.24); transform:translateY(-1px); }
+.path-btn .p-arrow{ font-size:16px; flex:none; }
+.path-btn .p-text{ display:flex; flex-direction:column; line-height:1.25; min-width:0; }
+.path-btn .p-kicker{ font-size:10px; letter-spacing:.1em; text-transform:uppercase; opacity:.8; }
+.path-btn .p-title{ font-size:13px; font-weight:600; font-family:'Google Sans',sans-serif; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.path-btn.next{ justify-content:flex-end; text-align:right; }
+.path-btn.next .p-text{ align-items:flex-end; }
+.path-btn.index{ justify-content:center; text-align:center; background:rgba(0,0,0,.22); border-color:rgba(255,255,255,.28); padding:10px 18px; }
+.path-btn.index .p-text{ align-items:center; }
+.path-spacer{visibility:hidden;}
+
+.bottom-nav{ max-width:1180px; margin:0 auto 40px; padding:0 24px; display:grid; grid-template-columns:1fr auto 1fr; gap:12px; }
+.bottom-nav .path-btn{ color:var(--ink); background:var(--paper); border:1px solid var(--line); }
+.bottom-nav .path-btn:hover{ background:#2c2d30; }
+.bottom-nav .path-btn.index{ background:#1a2a45; border-color:#2a3a55; }
+
+.wrap-idx{ max-width:1100px; margin:-56px auto 60px; padding:0 24px; }
+
+.layout{ max-width:1180px; margin:-8px auto 60px; padding:0 24px; display:grid; grid-template-columns:250px 1fr; gap:32px; align-items:start; }
+nav.toc{ background:var(--paper); border-radius:16px; box-shadow:var(--card-shadow); padding:18px 10px; position:sticky; top:20px; max-height:calc(100vh - 40px); overflow:auto; }
+nav.toc .toc-head{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--sub); padding:6px 14px 10px; font-weight:500; display:flex; align-items:center; justify-content:space-between; }
+nav.toc a{ display:block; padding:9px 14px; border-radius:10px; color:var(--ink); text-decoration:none; font-size:13.5px; border-left:3px solid transparent; }
+nav.toc a:hover{background:#2c2d30;}
+nav.toc a.active{background:#2a3a55; color:#a8c7fa; border-left-color:var(--blue); font-weight:500;}
+nav.toc .toc-divider{ margin:10px 10px 6px; border-top:1px solid var(--line); padding-top:10px; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--sub); font-weight:500; }
+main{min-width:0;}
+
+/* ===== In-page "find" search (lives inside nav.toc — shared by desktop sidebar + mobile drawer) ===== */
+.toc-search{ padding:4px 10px 12px; }
+.toc-search-box{ position:relative; }
+.toc-search input{
+  width:100%; padding:9px 34px 9px 32px; border-radius:10px; border:1px solid var(--line);
+  background:#1a1b1e; color:var(--ink); font-size:13px; box-sizing:border-box;
+}
+.toc-search input::placeholder{ color:var(--sub); }
+.toc-search input:focus{ outline:none; border-color:#5f6368; }
+.toc-search .s-icon{ position:absolute; left:10px; top:50%; transform:translateY(-50%); font-size:12px; opacity:.7; pointer-events:none; }
+.toc-search .s-clear{
+  position:absolute; right:5px; top:50%; transform:translateY(-50%);
+  width:22px; height:22px; border-radius:6px; border:none; background:#2c2d30; color:var(--sub);
+  font-size:11px; cursor:pointer; display:none; align-items:center; justify-content:center;
+}
+.toc-search.has-query .s-clear{ display:flex; }
+.toc-search-nav{
+  display:none; align-items:center; justify-content:space-between; gap:8px;
+  margin-top:8px; font-size:11.5px; color:var(--sub);
+}
+.toc-search-nav.show{ display:flex; }
+.toc-search-nav .snav-btns{ display:flex; gap:4px; }
+.toc-search-nav button{
+  width:24px; height:24px; border-radius:6px; border:1px solid var(--line); background:#1a1b1e;
+  color:var(--ink); font-size:12px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+}
+.toc-search-nav button:hover{ background:#2c2d30; }
+.toc-search-nav button:disabled{ opacity:.4; cursor:default; }
+
+mark.search-hit{ background:#fdd663; color:#131417; padding:0 2px; border-radius:3px; }
+mark.search-hit.active{ background:#ff9d45; box-shadow:0 0 0 2px rgba(255,157,69,.35); }
+
+
+.section{ background:var(--paper); border-radius:18px; box-shadow:var(--card-shadow); padding:30px 32px; margin-bottom:24px; scroll-margin-top:20px; position: sticky;}
+.section .kicker{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+.kicker-left{ display:flex; align-items:center; gap:10px; }
+.num-badge{ width:30px;height:30px;border-radius:9px; display:flex;align-items:center;justify-content:center; color:#fff; font-weight:700; font-size:14px; font-family:'Google Sans',sans-serif; flex:none; line-height:1; }
+.section h2{font-size:21px; margin:0; font-weight:700; line-height:1.3;}
+.section p{color:#c7cbd1; font-size:15px; margin:0 0 14px;}
+.section p:last-child{margin-bottom:0;}
+.lede{font-size:15.5px; color:#c7cbd1;}
+.subhead{ font-family:'Google Sans',sans-serif; font-size:14.5px; font-weight:700; color:#e8eaed; margin:22px 0 10px; display:flex; align-items:center; gap:9px; }
+.subhead:first-of-type{margin-top:4px;}
+.subhead .sub-dot{ width:8px; height:8px; border-radius:50%; flex:none; }
+
+.phrase-list{ list-style:none; margin:0 0 4px; padding:0; }
+.phrase-list li{ padding:11px 0; border-bottom:1px solid var(--line); font-size:15px; color:#dfe1e5; }
+.phrase-list li:last-child{ border-bottom:none; }
+.phrase-list .en{ font-weight:500; }
+.phrase-list .si-inline{ display:block; color:#9aa0a6; font-size:13px; margin-top:3px; }
+
+.dialogue{ background:#1a1b1e; border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin:16px 0; }
+.dialogue .dlg-title{ font-family:'Google Sans',sans-serif; font-weight:700; font-size:13px; color:var(--yellow); text-transform:uppercase; letter-spacing:.06em; margin-bottom:14px; }
+.dline{ display:flex; gap:12px; margin-bottom:12px; align-items:flex-start; }
+.dline:last-child{margin-bottom:0;}
+.dline .who{ flex:none; width:78px; font-family:'Google Sans',sans-serif; font-weight:700; font-size:12.5px; padding:4px 0; border-radius:8px; text-align:center; color:#fff; height:fit-content; }
+.dline.a .who{ background:#1a73e8; }
+.dline.b .who{ background:#EA4335; }
+.dline.c .who{ background:#34A853; }
+.dline.d .who{ background:#F09300; }
+.dline.e .who{ background:#7B61FF; }
+.dline .msg{ background:#232427; border:1px solid var(--line); border-radius:10px; padding:10px 14px; font-size:14.5px; color:#e8eaed; flex:1; }
+.dline .msg .si-line{ display:block; color:#9aa0a6; font-size:12.5px; margin-top:5px; }
+
+table.vtable{ width:100%; border-collapse:collapse; margin-top:6px; font-size:14px; }
+table.vtable th{ text-align:left; font-family:'Google Sans',sans-serif; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--sub); padding:10px 12px; border-bottom:2px solid var(--line); }
+table.vtable td{ padding:11px 12px; border-bottom:1px solid var(--line); color:#dfe1e5; vertical-align:top; }
+table.vtable tr:last-child td{ border-bottom:none; }
+table.vtable td.term{ font-weight:600; color:#fff; white-space:nowrap; }
+.table-wrap{ overflow-x:auto; margin:8px 0 4px; border:1px solid var(--line); border-radius:12px; }
+table.vtable{min-width:520px;}
+
+.callout{ background:#22344d; border-left:4px solid var(--blue); border-radius:10px; padding:14px 18px; font-size:14px; color:#a8c7fa; margin:16px 0; }
+.callout.warn{ background:#3a2530; border-left-color:var(--red); color:#f3b8c2; }
+.callout.tip{ background:#22344d; border-left-color:var(--green); color:#bfe9cd; background:#1c2b22; border-left-color:var(--green); }
+.callout b{color:#fff;}
+
+.role-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:16px 0 4px; }
+.role-card{ border-radius:14px; padding:16px 15px; color:#fff; }
+.role-card .r-name{font-family:'Google Sans',sans-serif; font-weight:700; font-size:14px;}
+.role-card .r-focus{font-size:12px; opacity:.92; margin-top:6px; line-height:1.4;}
+.r1{background:#4285F4;} .r2{background:#34A853;} .r3{background:#F09300;} .r4{background:#7B61FF;}
+
+.slide{ background:#1a1b1e; border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:14px 0; position:relative; }
+.slide::before{ content:"SLIDE"; position:absolute; top:10px; right:14px; font-size:9px; letter-spacing:.12em; color:#5f6368; font-weight:700; }
+.slide .slide-title{ color:var(--blue); font-size:16.5px; font-weight:700; margin:0 0 10px; }
+.slide ul{margin:0; padding-left:20px;}
+.slide li{margin-bottom:7px; font-size:14px; color:#c7cbd1;}
+.slide li::marker{color:var(--blue);}
+
+.chip-row{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 4px;}
+.chip{ background:#2c2d30; border:1px solid var(--line); color:#dfe1e5; font-size:12.5px; padding:6px 12px; border-radius:16px; }
+
+.grammar-point{ border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin-bottom:14px; background:#1a1b1e; }
+.grammar-point:last-child{margin-bottom:0;}
+.grammar-point .g-name{ font-family:'Google Sans',sans-serif; font-weight:700; font-size:14.5px; color:var(--blue); margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+.grammar-point .g-name .g-tag{ font-size:10px; letter-spacing:.06em; text-transform:uppercase; background:#22344d; color:#a8c7fa; padding:3px 8px; border-radius:8px; font-weight:600; }
+.grammar-point p{ font-size:14px; color:#c7cbd1; margin:0 0 8px; }
+.grammar-point ul{ margin:0; padding-left:18px; }
+.grammar-point li{ font-size:13.5px; color:#dfe1e5; margin-bottom:5px; }
+.grammar-point li:last-child{margin-bottom:0;}
+.grammar-point li .ex-en{ color:#e8eaed; }
+.grammar-point li .ex-si{ display:block; color:#9aa0a6; font-size:12px; margin-top:2px; }
+
+table.mistake-table{ width:100%; border-collapse:collapse; margin-top:6px; font-size:14px; }
+table.mistake-table th{ text-align:left; font-family:'Google Sans',sans-serif; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--sub); padding:10px 12px; border-bottom:2px solid var(--line); }
+table.mistake-table td{ padding:12px; border-bottom:1px solid var(--line); vertical-align:top; font-size:13.5px; }
+table.mistake-table tr:last-child td{ border-bottom:none; }
+table.mistake-table td.wrong{ color:var(--red); }
+table.mistake-table td.wrong::before{ content:"\2717  "; }
+table.mistake-table td.right{ color:var(--green); }
+table.mistake-table td.right::before{ content:"\2713  "; }
+table.mistake-table td.note{ color:#9aa0a6; font-size:12.5px; }
+.mistake-table-wrap{ overflow-x:auto; margin:8px 0 4px; border:1px solid var(--line); border-radius:12px; }
+table.mistake-table{min-width:560px;}
+
+footer{ text-align:center; color:var(--sub); font-size:12.5px; padding:20px 0 50px; }
+.back-top{ display:inline-block; margin-top:10px; font-size:12px; color:var(--blue); text-decoration:none; }
+
+@media (max-width:900px){
+  .hero{padding:40px 20px 30px;} .hero h1{font-size:24px;} .hero p.lead{font-size:14.5px;}
+  .layout{grid-template-columns:1fr; margin-top:20px;}
+  .mobile-bar{display:flex;}
+  .hero-search-row{ display:block; }
+  .hero-find-col{ margin-top:10px; }
+  nav.toc{ display:none; }
+  nav.toc.drawer-open{ display:block; position:fixed; top:0; left:0; bottom:0; z-index:50; width:82%; max-width:320px; max-height:none; border-radius:0; box-shadow:2px 0 24px rgba(0,0,0,.18); padding:18px 8px 24px; animation:slideIn .22s ease; overflow:auto; }
+  nav.toc.drawer-open .toc-head{padding:8px 16px 14px;}
+  nav.toc a{padding:12px 16px; font-size:14.5px;}
+  .section{padding:22px 18px;}
+  .role-grid{grid-template-columns:1fr 1fr;}
+  .path-nav{grid-template-columns:1fr; }
+  .path-btn.prev, .path-btn.next{ justify-content:center; text-align:center; }
+  .path-btn.prev .p-text, .path-btn.next .p-text{ align-items:center; }
+  .bottom-nav{grid-template-columns:1fr;}
+}
+@media (max-width:400px){ nav.toc.drawer-open{width:88%;} }
+@media (max-width:560px){
+  .dline{flex-direction:column;}
+  .dline .who{width:auto; align-self:flex-start; padding:3px 10px;}
+  table.vtable{min-width:420px;}
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-bar" id="mobileBar">
+  <span class="m-title">15. Explaining Your Website in a Viva</span>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="toc" aria-label="Open section menu">
+    <span></span>
+  </button>
+</div>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Spoken English Practice</span>
+    <h1>15. Explaining Your Website in a Viva</h1>
+    <p class="lead">A speaking guide for explaining your finished university website to a lecturer in a viva, using the example project ‘UniEvents — an event booking website.’</p>
+    <div class="hero-meta"><span><span class="dot"></span>Presentations</span><span><span class="dot"></span>UniEvents Website Example</span><span><span class="dot"></span>12 sections</span></div>
+
+    <div class="hero-search-row">
+      <div class="site-search" id="siteSearch">
+        <span class="s-icon">🔍</span>
+        <input type="text" id="topicJump" placeholder="Search topics… e.g. supermarket, bank, presentation" autocomplete="off">
+        <button class="s-clear" id="jumpClear" aria-label="Clear search">✕</button>
+        <div class="s-dropdown" id="jumpDropdown"></div>
+      </div>
+
+      <div class="hero-find-col">
+        <div class="site-search find-page-search" id="heroFindWrap">
+          <span class="s-icon">🔍</span>
+          <input type="text" id="heroFindInput" placeholder="Find on this page…" autocomplete="off">
+          <button class="s-clear" id="heroFindClear" aria-label="Clear search">✕</button>
+        </div>
+        <div class="find-page-nav" id="heroFindNav">
+          <span id="heroSearchCount">0 / 0</span>
+          <div class="snav-btns">
+            <button id="heroSearchPrev" aria-label="Previous match">↑</button>
+            <button id="heroSearchNext" aria-label="Next match">↓</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="path-nav">
+    <a class="path-btn prev" href="14-cybersecurity-lab-demo.html"><span class="p-arrow">←</span><span class="p-text"><span class="p-kicker">Previous</span><span class="p-title">14. Cybersecurity Project Video</span></span></a>
+    <a class="path-btn index" href="index.html"><span class="p-text"><span class="p-kicker">All Topics</span><span class="p-title">🏠 Main Index</span></span></a>
+    <a class="path-btn next" href="16-technical-interview.html"><span class="p-text"><span class="p-kicker">Next</span><span class="p-title">16. Technical Interview</span></span><span class="p-arrow">→</span></a>
+  </div>
+</div>
+
+<div class="layout">
+  <nav class="toc" id="toc">
+    <div class="toc-head">On this page <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button></div>
+    <div class="toc-search">
+      <div class="toc-search-box">
+        <span class="s-icon">🔍</span>
+        <input type="text" id="pageSearchInput" placeholder="Find on this page…" autocomplete="off">
+        <button class="s-clear" id="pageSearchClear" aria-label="Clear search">✕</button>
+      </div>
+      <div class="toc-search-nav" id="searchNav">
+        <span id="searchCount">0 / 0</span>
+        <div class="snav-btns">
+          <button id="searchPrev" aria-label="Previous match">↑</button>
+          <button id="searchNext" aria-label="Next match">↓</button>
+        </div>
+      </div>
+    </div>
+    <a href="#situation">1. The Situation</a><a href="#plan">2. Plan Your Viva</a><a href="#opening">3. Introduction</a><a href="#architecture">4. Architecture</a><a href="#demo">5. Live Demo</a><a href="#code">6. Code &amp; Database</a><a href="#security">7. Security &amp; Testing</a><a href="#questions">8. Questions &amp; Closing</a><a href="#vocabulary">9. Vocabulary</a><a href="#grammar">10. Grammar Focus</a><a href="#mistakes">11. Common Mistakes</a><a href="#practice">12. Practice Prompts</a>
+  </nav>
+  <main>
+    <section class="section" id="situation">
+      <div class="kicker">
+        <div class="kicker-left"><div class="num-badge" style="background:var(--blue)">1</div><h2>The situation</h2></div>
+      </div>
+      <p class="lede">You have finished developing a website for your university module (example: <b>“UniEvents — an event booking website”</b> built with HTML, CSS, JavaScript, PHP and MySQL). Now you must explain it to your lecturer in a <b>viva</b> — a short oral assessment where you demonstrate the site, explain how it works, and answer questions.</p>
+      <div class="callout tip"><b>Tip:</b> The lecturer is checking two things: <b>does it work?</b> and <b>do you really understand it?</b> Speak about <i>why</i> you made each decision, not only <i>what</i> you built.</div>
+      <div class="callout warn"><b>Be honest:</b> Never claim work that is not yours. If you used a library, a tutorial or AI help, say so clearly and explain the part you understand.</div>
+    </section><section class="section" id="plan">
+      <div class="kicker">
+        <div class="kicker-left"><div class="num-badge" style="background:var(--green)">2</div><h2>Plan your viva</h2></div>
+      </div>
+      <p class="lede">Use this 10-minute structure as your skeleton. Shorten each part if your lecturer gives you less time.</p>
+      <div class="table-wrap"><table class="vtable"><thead><tr><th>Time</th><th>Part</th><th>What you do</th></tr></thead><tbody><tr><td class="term">0:00 – 0:45</td><td>Introduction</td><td>Name, project title, purpose, target users</td></tr><tr><td class="term">0:45 – 2:00</td><td>Architecture & tech stack</td><td>Front end, back end, database — and why you chose them</td></tr><tr><td class="term">2:00 – 5:00</td><td>Live demo</td><td>Walk through the main user journey, then the admin side</td></tr><tr><td class="term">5:00 – 7:00</td><td>Code & database</td><td>Show one key feature: code snippet and tables</td></tr><tr><td class="term">7:00 – 8:00</td><td>Security & testing</td><td>Validation, passwords, SQL injection, test results</td></tr><tr><td class="term">8:00 – 9:00</td><td>Challenges & improvements</td><td>What went wrong, what you learned, what you would add</td></tr><tr><td class="term">9:00 – 10:00</td><td>Closing & questions</td><td>Summarize and invite questions</td></tr></tbody></table></div><div class="slide"><div class="slide-title">Before the viva</div><ul><li>Run the website locally and test every feature once</li><li>Have the database, code editor and browser already open</li><li>Prepare test accounts (user and admin) and sample data</li><li>Prepare a backup: screenshots or a short screen recording</li><li>Be ready to explain every file you submitted</li><li>Practise out loud and time yourself</li></ul></div>
+    </section><section class="section" id="opening">
+      <div class="kicker">
+        <div class="kicker-left"><div class="num-badge" style="background:var(--red)">3</div><h2>Step 1 — Introduce the project</h2></div>
+      </div>
+      <p class="lede">Start with who you are, what the website does, and who it is for. Keep it under a minute.</p>
+      <div class="slide"><div class="slide-title">Opening</div><ul><li>Greet the lecturer and introduce yourself</li><li>Name the project and say its purpose in one sentence</li><li>Describe the target users</li><li>Outline what you will show</li></ul></div><div class="dialogue">
+        <div class="dlg-title">Introducing your project</div>
+        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">Good morning, sir. My name is Nero Gunasekara, and today I’ll be presenting my web development project, UniEvents.<span class="si-line si">සුබ උදෑසනක් සර්. මගේ නම නෙරෝ ගුණසේකර, අද මම මගේ web development project එක වන UniEvents ඉදිරිපත් කරනවා.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">UniEvents is an event booking website that allows students to browse university events and reserve a seat online.<span class="si-line si">UniEvents කියන්නේ සිසුන්ට විශ්වවිද්‍යාල events බලලා online seat එකක් වෙන් කරගන්න ඉඩ දෙන event booking website එකක්.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">I built it to solve a real problem: at the moment, students register on paper, which is slow and often confusing.<span class="si-line si">මම මේක හැදුවේ සැබෑ ගැටලුවක් විසඳන්න: දැන් සිසුන් paper එකෙන් register වෙන්නේ, ඒක ගොඩක් මන්දගාමී සහ ව්‍යාකූලයි.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">First, I’ll explain the design and technologies. Then I’ll give a live demo, and finally I’ll talk about security and testing.<span class="si-line si">මුලින්ම design එකයි technologies ගැනයි පැහැදිලි කරනවා. ඊට පස්සේ live demo එකක් දෙනවා, අවසානයේ security සහ testing ගැන කතා කරනවා.</span></div>
+        </div>
+      </div>
+    </section><section class="section" id="architecture">
+      <div class="kicker">
+        <div class="kicker-left"><div class="num-badge" style="background:var(--yellow)">4</div><h2>Step 2 — Architecture & tech stack</h2></div>
+      </div>
+      <p class="lede">Explain the big picture first, then justify your choices. Lecturers love hearing the word “because”.</p>
+      <div class="slide"><div class="slide-title">Architecture</div><ul><li>Show a simple diagram: browser → server → database</li><li>Name each technology and its role</li><li>Give one reason for each choice</li><li>Mention the folder structure briefly</li></ul></div><div class="dialogue">
+        <div class="dlg-title">Explaining the tech stack</div>
+        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">Let me start with the architecture. The front end is built with HTML, CSS and JavaScript, and it communicates with a PHP back end.<span class="si-line si">architecture එකෙන් පටන් ගන්නම්. front end එක HTML, CSS, JavaScript වලින් හදලා, PHP back end එකත් එක්ක communicate වෙනවා.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">The PHP scripts process the requests and store the data in a MySQL database.<span class="si-line si">PHP scripts requests process කරලා data MySQL database එකේ ගබඩා කරනවා.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">I chose MySQL because the data is structured — users, events and bookings are related to each other.<span class="si-line si">data structured නිසා මම MySQL තෝරගත්තා — users, events, bookings එකිනෙකට සම්බන්ධයි.</span></div>
+        </div>        <div class="dline b">
+          <div class="who">Lecturer</div>
+          <div class="msg">Why did you choose PHP instead of Node.js?<span class="si-line si">ඔබ Node.js වෙනුවට PHP තෝරගත්තේ ඇයි?</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">That’s a good question. We covered PHP in our lectures, and it runs easily on XAMPP, so I could test it quickly on my own laptop. However, I understand that Node.js would also be a good option.<span class="si-line si">හොඳ ප්‍රශ්නයක්. lectures වලදී PHP ඉගැන්නුවා, XAMPP එකේ ලේසියෙන් run වෙන නිසා laptop එකේ ඉක්මනින් test කරන්න පුළුවන් වුණා. ඒත් Node.js කියන්නෙත් හොඳ විකල්පයක් බව මම දන්නවා.</span></div>
+        </div>
+      </div>
+    </section><section class="section" id="demo">
+      <div class="kicker">
+        <div class="kicker-left"><div class="num-badge" style="background:var(--purple)">5</div><h2>Step 3 — The live demo</h2></div>
+      </div>
+      <p class="lede">Follow one clear user journey. Announce each step, do it slowly, and explain the result. Then show the admin side.</p>
+      <div class="slide"><div class="slide-title">Demo flow</div><ul><li>Home page → register → log in</li><li>Browse events → book a seat → see confirmation</li><li>Switch to the admin account → add or edit an event</li><li>Show how the data changes in the database</li></ul></div><div class="dialogue">
+        <div class="dlg-title">Walking through the demo</div>
+        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">Now I’m going to show you the website. This is the home page, where students can see the upcoming events.<span class="si-line si">දැන් මම website එක පෙන්නන්නම්. මේ home page එක, මෙතැනින් සිසුන්ට ඉදිරි events බලන්න පුළුවන්.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">First, I’ll create a new account. As you can see, the form checks that the email address is valid before it accepts it.<span class="si-line si">මුලින්ම අලුත් account එකක් හදනවා. ඔබට පේන විදිහට, email address එක වලංගුදැයි form එක පරීක්ෂා කරලා තමයි පිළිගන්නේ.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">Next, I’m selecting an event and clicking ‘Book now’. The system shows a confirmation message and reduces the number of available seats.<span class="si-line si">ඊළඟට, event එකක් තෝරලා ‘Book now’ click කරනවා. system එක confirmation message එකක් පෙන්නලා ඉතිරි seats ගණන අඩු කරනවා.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">Now let me log in as the administrator. Here, I can add a new event, edit the details, or delete an event.<span class="si-line si">දැන් administrator විදිහට login වෙන්නම්. මෙතැනින් අලුත් event එකක් add කරන්න, විස්තර edit කරන්න, නැත්නම් delete කරන්න පුළුවන්.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">If I open the database, you can see the new booking has been saved in the bookings table.<span class="si-line si">database එක open කළොත්, අලුත් booking එක bookings table එකේ save වෙලා තියෙනවා පේනවා.</span></div>
+        </div>
+      </div>
+    </section><section class="section" id="code">
+      <div class="kicker">
+        <div class="kicker-left"><div class="num-badge" style="background:#4285F4">6</div><h2>Step 4 — Explain your code & database</h2></div>
+      </div>
+      <p class="lede">Choose one important feature and explain it clearly. Don’t read code line by line — explain the logic in plain English.</p>
+      <div class="slide"><div class="slide-title">Explaining code</div><ul><li>Open the relevant file and say its name</li><li>Explain the purpose first, then the steps</li><li>Use simple words: “this function checks…”, “this query selects…”</li><li>Show the database tables and their relationships</li></ul></div><div class="dialogue">
+        <div class="dlg-title">Explaining a key feature</div>
+        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">Let me explain the booking feature. This file is called book.php, and its purpose is to save a booking for the logged-in user.<span class="si-line si">booking feature එක පැහැදිලි කරන්නම්. මේ file එකේ නම book.php, ඒකේ අරමුණ login වුණ user ට booking එකක් save කිරීම.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">First, the script checks whether the user is logged in. If not, it redirects them to the login page.<span class="si-line si">මුලින්ම script එක user login වෙලාද කියලා පරීක්ෂා කරනවා. නැත්නම් login page එකට redirect කරනවා.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">Then it checks if there are seats available. If there are, it inserts a new record into the bookings table.<span class="si-line si">ඊට පස්සේ seats තියෙනවාද කියලා බලනවා. තියෙනවා නම් bookings table එකට අලුත් record එකක් insert කරනවා.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">The database has three tables: users, events and bookings. The bookings table connects the other two using foreign keys.<span class="si-line si">database එකේ tables තුනක් තියෙනවා: users, events, bookings. bookings table එක foreign keys මගින් අනිත් දෙක සම්බන්ධ කරනවා.</span></div>
+        </div>        <div class="dline b">
+          <div class="who">Lecturer</div>
+          <div class="msg">Can you explain this part of the code?<span class="si-line si">මේ code කොටස පැහැදිලි කරන්න පුළුවන්ද?</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">Yes, of course. This query selects all events where the date is in the future, and it sorts them by date so the nearest event appears first.<span class="si-line si">ඔව්, ඇත්තෙන්ම. මේ query එකෙන් දිනය අනාගතයේ තියෙන සියලු events තෝරලා, ළඟම event එක මුලින් එන්න දිනය අනුව sort කරනවා.</span></div>
+        </div>
+      </div>
+    </section><section class="section" id="security">
+      <div class="kicker">
+        <div class="kicker-left"><div class="num-badge" style="background:#EA4335">7</div><h2>Step 5 — Security & testing</h2></div>
+      </div>
+      <p class="lede">Even a simple university website should show security awareness. Mention the protections you added and how you tested the site.</p>
+      <div class="slide"><div class="slide-title">Security & testing</div><ul><li>Passwords are hashed — never stored in plain text</li><li>Prepared statements prevent SQL injection</li><li>Inputs are validated on both the client and server side</li><li>Sessions protect admin pages from unauthorised access</li><li>Mention your test cases and the bugs you fixed</li></ul></div><div class="dialogue">
+        <div class="dlg-title">Talking about security and testing</div>
+        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">Security was an important part of this project. For example, passwords are hashed before they are stored, so even if the database is leaked, the real passwords are not exposed.<span class="si-line si">security මේ project එකේ වැදගත් කොටසක්. උදාහරණයක් විදිහට, passwords store කරන්න කලින් hash කරන නිසා database එක leak වුණත් සැබෑ passwords නිරාවරණය වෙන්නේ නැහැ.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">I also used prepared statements for every database query. This protects the site against SQL injection attacks.<span class="si-line si">database query හැම එකකටම prepared statements භාවිත කළා. මේකෙන් SQL injection attacks වලින් site එක ආරක්ෂා වෙනවා.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">To test the website, I created twenty test cases, including invalid emails, empty fields and duplicate bookings. Three of them failed at first, so I fixed those bugs.<span class="si-line si">website එක test කරන්න, වලංගු නැති emails, හිස් fields, duplicate bookings ඇතුළුව test cases විස්සක් හැදුවා. මුලදී ඒවායින් තුනක් fail වුණා, ඒ නිසා ඒ bugs හදුවා.</span></div>
+        </div>
+      </div>
+    </section><section class="section" id="questions">
+      <div class="kicker">
+        <div class="kicker-left"><div class="num-badge" style="background:#7B61FF">8</div><h2>Step 6 — Challenges, improvements & questions</h2></div>
+      </div>
+      <p class="lede">Show that you can reflect on your work. Then answer questions calmly — it is fine to think before you speak.</p>
+      <div class="slide"><div class="slide-title">Handling questions</div><ul><li>Listen to the whole question; ask for repetition if needed</li><li>Pause and think, then answer in 2–4 sentences</li><li>If you don’t know, say so honestly and explain how you would find out</li><li>Never argue — respond politely and give your reasons</li></ul></div><div class="dialogue">
+        <div class="dlg-title">Reflection and Q&amp;A</div>
+        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">The biggest challenge was preventing two students from booking the last seat at the same time. I solved it by checking the seat count again inside a database transaction.<span class="si-line si">ලොකුම අභියෝගය වුණේ අන්තිම seat එක සිසුන් දෙදෙනෙක් එකවර book කිරීම වැළැක්වීම. database transaction එකක් ඇතුළේ seat ගණන නැවත පරීක්ෂා කිරීමෙන් එය විසඳුවා.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">If I had more time, I would add email confirmations and a payment system.<span class="si-line si">මට තව කාලය තිබුණා නම්, email confirmations සහ payment system එකක් එකතු කරනවා.</span></div>
+        </div>        <div class="dline b">
+          <div class="who">Lecturer</div>
+          <div class="msg">What would happen if a user entered malicious code in the form?<span class="si-line si">user කෙනෙක් form එකේ malicious code එකක් ඇතුළත් කළොත් මොකද වෙන්නේ?</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">The server validates and sanitises every input, and the output is escaped, so the code would be displayed as plain text instead of running.<span class="si-line si">server එක input හැම එකක්ම validate සහ sanitise කරනවා, output එකත් escape කරන නිසා, code එක run වෙන්නේ නැතුව සාමාන්‍ය text එකක් විදිහට පෙන්වනවා.</span></div>
+        </div>        <div class="dline b">
+          <div class="who">Lecturer</div>
+          <div class="msg">Did you write all of this code yourself?<span class="si-line si">මේ code සියල්ලම ඔබම ලිව්වාද?</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">I wrote the booking and login logic myself. For the layout, I used Bootstrap, and I followed the official PHP documentation for password hashing.<span class="si-line si">booking සහ login logic මම ම ලිව්වා. layout එකට Bootstrap භාවිත කළා, password hashing සඳහා නිල PHP documentation අනුගමනය කළා.</span></div>
+        </div>        <div class="dline b">
+          <div class="who">Lecturer</div>
+          <div class="msg">Can you explain how the login works?<span class="si-line si">login වැඩ කරන්නේ කොහොමද කියලා පැහැදිලි කරන්න පුළුවන්ද?</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">I’m sorry, could you repeat that? ... Yes — when the user submits the form, the server compares the password with the stored hash. If they match, a session is created.<span class="si-line si">සමාවෙන්න, නැවත කියන්න පුළුවන්ද? ... ඔව් — user form එක submit කළාම, server එක password එක stored hash එකත් එක්ක සසඳනවා. ගැලපෙනවා නම් session එකක් හදනවා.</span></div>
+        </div>        <div class="dline a">
+          <div class="who">You</div>
+          <div class="msg">To summarize, UniEvents lets students browse and book events online, with secure login and an admin panel. Thank you for your time. I’m happy to answer any further questions.<span class="si-line si">සාරාංශයක් විදිහට, UniEvents මගින් සිසුන්ට ආරක්ෂිත login එකකින් events online බලලා book කරන්න පුළුවන්, admin panel එකකුත් තියෙනවා. ඔබේ කාලයට ස්තූතියි. තවත් ප්‍රශ්න තියෙනවා නම් පිළිතුරු දෙන්න සතුටුයි.</span></div>
+        </div>
+      </div>
+    </section><section class="section" id="vocabulary">
+      <div class="kicker">
+        <div class="kicker-left"><div class="num-badge" style="background:var(--green)">9</div><h2>Useful vocabulary</h2></div>
+      </div>
+      <p class="lede">Technical terms and polite phrases for explaining, justifying and answering honestly.</p>
+      <div class="table-wrap"><table class="vtable"><thead><tr><th>Phrase / Word</th><th>Meaning (Sinhala)</th><th>Example</th></tr></thead><tbody><tr><td class="term">Viva (viva voce)</td><td>වාචික පරීක්ෂණය</td><td>“I have a viva for my web module on Friday.”</td></tr><tr><td class="term">Front end / Back end</td><td>පරිශීලක අතුරුමුහුණත / සර්වර් පැත්ත</td><td>“The front end communicates with the back end.”</td></tr><tr><td class="term">Database / Table / Query</td><td>දත්ත ගබඩාව / වගුව / විමසුම</td><td>“This query selects all upcoming events.”</td></tr><tr><td class="term">Feature / Functionality</td><td>විශේෂාංගය / ක්‍රියාකාරීත්වය</td><td>“The main feature is online booking.”</td></tr><tr><td class="term">Authentication / Authorisation</td><td>අනන්‍යතා තහවුරු කිරීම / අවසර දීම</td><td>“Authentication checks who you are.”</td></tr><tr><td class="term">SQL injection</td><td>SQL injection ප්‍රහාරය</td><td>“Prepared statements prevent SQL injection.”</td></tr><tr><td class="term">Input validation</td><td>ආදාන වලංගු කිරීම</td><td>“Input validation stops invalid data.”</td></tr><tr><td class="term">Responsive design</td><td>උපාංගයට ගැලපෙන සැලසුම</td><td>“The layout is responsive on mobile phones.”</td></tr><tr><td class="term">Test case</td><td>පරීක්ෂණ අවස්ථාව</td><td>“I wrote twenty test cases.”</td></tr><tr><td class="term">The reason I chose … is …</td><td>මම … තෝරගත්ත හේතුව …</td><td>“The reason I chose MySQL is that the data is relational.”</td></tr><tr><td class="term">To be honest, I’m not sure, but…</td><td>ඇත්තම කියනවා නම්, මට විශ්වාස නැහැ, ඒත්…</td><td>“To be honest, I’m not sure, but I would check the documentation.”</td></tr><tr><td class="term">If I had more time, I would…</td><td>මට තව කාලය තිබුණා නම්, මම…</td><td>“If I had more time, I would add payments.”</td></tr></tbody></table></div>
+    </section><section class="section" id="grammar">
+      <div class="kicker">
+        <div class="kicker-left"><div class="num-badge" style="background:var(--blue)">10</div><h2>Grammar focus</h2></div>
+      </div>
+      <p class="lede">The language patterns you need to describe what you built and justify your decisions.</p>
+      <div class="grammar-point">
+          <div class="g-name">Past simple — what you did during development<span class="g-tag">Core tense</span></div>
+          <p>Use the past simple for finished actions in the project.</p>
+          <ul><li><span class="ex-en">I designed the database first, then I built the login page.</span><span class="ex-si si">මම මුලින් database එක design කළා, ඊට පස්සේ login page එක හැදුවා.</span></li><li><span class="ex-en">I fixed three bugs during testing.</span><span class="ex-si si">testing වලදී bugs තුනක් හදුවා.</span></li></ul>
+        </div><div class="grammar-point">
+          <div class="g-name">Present simple — how the system works<span class="g-tag">Describing systems</span></div>
+          <p>Use the present simple for how the website normally works.</p>
+          <ul><li><span class="ex-en">The server checks the password and creates a session.</span><span class="ex-si si">server එක password එක පරීක්ෂා කරලා session එකක් හදනවා.</span></li><li><span class="ex-en">Each booking belongs to one user.</span><span class="ex-si si">booking එකක් user කෙනෙකුට අයිතියි.</span></li></ul>
+        </div><div class="grammar-point">
+          <div class="g-name">Because / so / in order to — giving reasons<span class="g-tag">Justifying</span></div>
+          <p>Explain your decisions with reasons and purposes.</p>
+          <ul><li><span class="ex-en">I used MySQL because the data is related.</span><span class="ex-si si">data සම්බන්ධ නිසා MySQL භාවිත කළා.</span></li><li><span class="ex-en">I hash passwords in order to protect users.</span><span class="ex-si si">users ව ආරක්ෂා කරන්න passwords hash කරනවා.</span></li></ul>
+        </div><div class="grammar-point">
+          <div class="g-name">Second conditional — future improvements<span class="g-tag">Reflection</span></div>
+          <p>Use ‘If I had…, I would…’ for unreal or hypothetical situations.</p>
+          <ul><li><span class="ex-en">If I had more time, I would add email notifications.</span><span class="ex-si si">මට තව කාලය තිබුණා නම්, email notifications එකතු කරනවා.</span></li><li><span class="ex-en">I would use a framework if the project were bigger.</span><span class="ex-si si">project එක ලොකු නම් framework එකක් භාවිත කරනවා.</span></li></ul>
+        </div>
+    </section><section class="section" id="mistakes">
+      <div class="kicker">
+        <div class="kicker-left"><div class="num-badge" style="background:var(--red)">11</div><h2>Common mistakes</h2></div>
+      </div>
+      <p class="lede">Fixes that make your viva answers sound clear and confident.</p>
+      <div class="mistake-table-wrap"><table class="mistake-table">
+      <thead><tr><th>Common mistake</th><th>Correct version</th><th>Why</th></tr></thead>
+      <tbody><tr><td class="wrong">I am use PHP for backend.</td><td class="right">I <b>used</b> PHP for the back end. / I <b>am using</b> PHP…</td><td class="note">Use the correct tense: past simple for the project; do not say ‘am use’.</td></tr><tr><td class="wrong">This website have a login page.</td><td class="right">This website <b>has</b> a login page.</td><td class="note">Third person singular: has.</td></tr><tr><td class="wrong">I did not know to do this feature.</td><td class="right">I <b>didn’t know how to</b> build this feature.</td><td class="note">Use ‘know how to + verb’.</td></tr><tr><td class="wrong">The reason is because the data is related.</td><td class="right">The reason is <b>that</b> the data is related. / I chose it <b>because</b>…</td><td class="note">Do not use ‘reason’ and ‘because’ together.</td></tr><tr><td class="wrong">If I have more time, I will adding payments.</td><td class="right">If I <b>had</b> more time, I <b>would add</b> payments.</td><td class="note">Second conditional: if + past, would + base verb.</td></tr><tr><td class="wrong">I copied it from internet.</td><td class="right">I <b>adapted it from an online tutorial</b> and I understand how it works.</td><td class="note">Be honest and professional; mention the source and show understanding.</td></tr><tr><td class="wrong">Sorry, I don’t know. (and silence)</td><td class="right">I’m not sure, but <b>I would check the documentation</b> to find out.</td><td class="note">Show your problem-solving approach instead of stopping.</td></tr></tbody>
+    </table></div>
+    </section><section class="section" id="practice">
+      <div class="kicker">
+        <div class="kicker-left"><div class="num-badge" style="background:var(--purple)">12</div><h2>Practice prompts</h2></div>
+      </div>
+      <p class="lede">Practise the whole viva as a mock session with a friend playing the lecturer.</p>
+      <div class="chip-row"><span class="chip">Introduce your project in 45 seconds</span><span class="chip">Draw and explain your architecture diagram</span><span class="chip">Explain one feature’s code in plain English</span><span class="chip">Answer: “Why did you choose this technology?”</span><span class="chip">Answer: “What would you improve?”</span><span class="chip">Answer: “What if you don’t know?” politely</span><span class="chip">Time the full viva — aim for 8–10 minutes</span></div>
+    </section>
+    <footer>Spoken English Practice — Personal reference site
+      <br><a class="back-top" href="#toc">Back to top ↑</a>
+    </footer>
+  </main>
+</div>
+
+<div class="bottom-nav">
+  <a class="path-btn prev" href="14-cybersecurity-lab-demo.html"><span class="p-arrow">←</span><span class="p-text"><span class="p-kicker">Previous</span><span class="p-title">14. Cybersecurity Project Video</span></span></a>
+  <a class="path-btn index" href="index.html"><span class="p-text"><span class="p-kicker">All Topics</span><span class="p-title">🏠 Main Index</span></span></a>
+  <a class="path-btn next" href="16-technical-interview.html"><span class="p-text"><span class="p-kicker">Next</span><span class="p-title">16. Technical Interview</span></span><span class="p-arrow">→</span></a>
+</div>
+
+<script>
+  // ===== TOC scroll-spy — highlights the active section link as you scroll =====
+  const sections = document.querySelectorAll('.section[id]');
+  const tocLinks = document.querySelectorAll('nav.toc a[href^="#"]');
+  const tocMap = {};
+  tocLinks.forEach(l => tocMap[l.getAttribute('href').slice(1)] = l);
+
+  const tocObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      if(entry.isIntersecting){
+        tocLinks.forEach(l => l.classList.remove('active'));
+        if(tocMap[id]) tocMap[id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(s => tocObserver.observe(s));
+
+  // ===== Bottom-of-page fallback — last section is short so the observer never fires for it =====
+  window.addEventListener('scroll', () => {
+    const scrollBottom = window.scrollY + window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+    if(scrollBottom >= pageHeight - 60){
+      const lastLink = tocLinks[tocLinks.length - 1];
+      if(lastLink && !lastLink.classList.contains('active')){
+        tocLinks.forEach(l => l.classList.remove('active'));
+        lastLink.classList.add('active');
+      }
+    }
+  }, { passive: true });
+</script>
+<script>
+  window.__NAV_TOPICS__ = [{"num": "01", "title": "Talking About Your Daily Routine", "href": "01-daily-routine.html"}, {"num": "02", "title": "Asking What Someone Is Doing", "href": "02-asking-whats-up.html"}, {"num": "03", "title": "Asking APIIT About Your Degree & Next Intake", "href": "03-asking-apiit-about-degree.html"}, {"num": "04", "title": "Introducing Yourself to the Whole Class", "href": "04-self-introduction-class.html"}, {"num": "05", "title": "Asking a New Classmate How They're Doing", "href": "05-asking-classmate-status.html"}, {"num": "06", "title": "Introducing Yourself Privately to a Classmate", "href": "06-introducing-to-classmate.html"}, {"num": "07", "title": "Asking Your Lecturer Questions", "href": "07-asking-lecturer-questions.html"}, {"num": "08", "title": "Giving a Solo PowerPoint Presentation", "href": "08-solo-presentation.html"}, {"num": "09", "title": "Giving a Team PowerPoint Presentation", "href": "09-team-presentation.html"}, {"num": "10", "title": "Buying Something at a Supermarket", "href": "10-supermarket-shopping.html"}, {"num": "11", "title": "Dealing With the Train Station", "href": "11-train-station.html"}, {"num": "12", "title": "Withdrawing Money at a Bank Counter", "href": "12-bank-withdrawal.html"}, {"num": "13", "title": "Reporting an Internet Issue to Hutch", "href": "13-hutch-customer-service.html"}, {"num": "14", "title": "Presenting a Cybersecurity Project on Video", "href": "14-cybersecurity-lab-demo.html"}, {"num": "15", "title": "Explaining Your Website in a Viva", "href": "15-viva-website-explanation.html"}];
+  window.__CURRENT_HREF__ = "15-viva-website-explanation.html";
+</script>
+<script>
+(function(){
+  const toc = document.getElementById('toc');
+  const menuBtn = document.getElementById('menuBtn');
+  const drawerClose = document.getElementById('drawerClose');
+  const backdrop = document.getElementById('tocBackdrop');
+  if(!toc || !menuBtn) return;
+
+  function openDrawer(){
+    toc.classList.add('drawer-open');
+    if(backdrop) backdrop.classList.add('show');
+    menuBtn.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer(){
+    toc.classList.remove('drawer-open');
+    if(backdrop) backdrop.classList.remove('show');
+    menuBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }
+
+  menuBtn.addEventListener('click', () => {
+    toc.classList.contains('drawer-open') ? closeDrawer() : openDrawer();
+  });
+  if(drawerClose) drawerClose.addEventListener('click', closeDrawer);
+  if(backdrop) backdrop.addEventListener('click', closeDrawer);
+  toc.querySelectorAll('a').forEach(l => l.addEventListener('click', closeDrawer));
+  window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeDrawer(); });
+  window.addEventListener('resize', () => { if(window.innerWidth > 900) closeDrawer(); });
+})();
+
+// ===== In-page "find" search (shared engine — drives both the sidebar/mobile-menu box and the hero box) =====
+(function(){
+  const mainEl = document.querySelector('main');
+  if(!mainEl) return;
+  let matches = [];
+  let activeIndex = -1;
+  const uiSets = [];
+
+  function clearHighlights(){
+    mainEl.querySelectorAll('mark.search-hit').forEach(mark => {
+      const parent = mark.parentNode;
+      parent.replaceChild(document.createTextNode(mark.textContent), mark);
+      parent.normalize();
+    });
+    matches = [];
+    activeIndex = -1;
+  }
+
+  function walkAndHighlight(query){
+    const lowerQuery = query.toLowerCase();
+    const walker = document.createTreeWalker(mainEl, NodeFilter.SHOW_TEXT, {
+      acceptNode(node){
+        if(!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        const tag = node.parentElement ? node.parentElement.tagName : '';
+        if(tag === 'SCRIPT' || tag === 'STYLE') return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    const textNodes = [];
+    let n;
+    while((n = walker.nextNode())) textNodes.push(n);
+
+    textNodes.forEach(node => {
+      const text = node.nodeValue;
+      const lowerText = text.toLowerCase();
+      if(!lowerText.includes(lowerQuery)) return;
+
+      const frag = document.createDocumentFragment();
+      let lastIndex = 0;
+      let idx = lowerText.indexOf(lowerQuery);
+
+      while(idx !== -1){
+        if(idx > lastIndex){
+          frag.appendChild(document.createTextNode(text.slice(lastIndex, idx)));
+        }
+        const mark = document.createElement('mark');
+        mark.className = 'search-hit';
+        mark.textContent = text.slice(idx, idx + query.length);
+        frag.appendChild(mark);
+        matches.push(mark);
+        lastIndex = idx + query.length;
+        idx = lowerText.indexOf(lowerQuery, lastIndex);
+      }
+      if(lastIndex < text.length){
+        frag.appendChild(document.createTextNode(text.slice(lastIndex)));
+      }
+      node.parentNode.replaceChild(frag, node);
+    });
+  }
+
+  function updateAllUI(){
+    uiSets.forEach(ui => {
+      if(matches.length === 0){
+        ui.navBar.classList.remove('show');
+        ui.prevBtn.disabled = true;
+        ui.nextBtn.disabled = true;
+        ui.countLabel.textContent = '0 / 0';
+      } else {
+        ui.navBar.classList.add('show');
+        ui.prevBtn.disabled = false;
+        ui.nextBtn.disabled = false;
+        ui.countLabel.textContent = `${activeIndex + 1} / ${matches.length}`;
+      }
+    });
+  }
+
+  function syncValue(value){
+    uiSets.forEach(ui => {
+      if(ui.input.value !== value) ui.input.value = value;
+      ui.wrap.classList.toggle('has-query', value.trim().length > 0);
+    });
+  }
+
+  function goToMatch(index){
+    if(matches.length === 0) return;
+    if(activeIndex >= 0 && matches[activeIndex]) matches[activeIndex].classList.remove('active');
+    activeIndex = ((index % matches.length) + matches.length) % matches.length;
+    const mark = matches[activeIndex];
+    mark.classList.add('active');
+    mark.scrollIntoView({ behavior:'smooth', block:'center' });
+    updateAllUI();
+  }
+
+  function runSearch(rawQuery){
+    clearHighlights();
+    const query = rawQuery.trim();
+    syncValue(rawQuery);
+
+    if(query.length < 2){
+      updateAllUI();
+      return;
+    }
+
+    walkAndHighlight(query);
+
+    if(matches.length === 0){
+      updateAllUI();
+      return;
+    }
+
+    goToMatch(0);
+  }
+
+  function resetAll(){
+    syncValue('');
+    clearHighlights();
+    updateAllUI();
+  }
+
+  function bindUI(ui){
+    if(!ui.input || !ui.clearBtn || !ui.wrap || !ui.navBar || !ui.countLabel || !ui.prevBtn || !ui.nextBtn) return;
+    uiSets.push(ui);
+    let debounceTimer = null;
+
+    ui.input.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      const val = ui.input.value;
+      debounceTimer = setTimeout(() => runSearch(val), 200);
+    });
+
+    ui.input.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter'){
+        e.preventDefault();
+        if(matches.length > 0) goToMatch(activeIndex + (e.shiftKey ? -1 : 1));
+      }
+      if(e.key === 'Escape'){
+        resetAll();
+        ui.input.blur();
+      }
+    });
+
+    ui.prevBtn.addEventListener('click', () => goToMatch(activeIndex - 1));
+    ui.nextBtn.addEventListener('click', () => goToMatch(activeIndex + 1));
+    ui.clearBtn.addEventListener('click', () => {
+      resetAll();
+      ui.input.focus();
+    });
+  }
+
+  bindUI({
+    input: document.getElementById('pageSearchInput'),
+    clearBtn: document.getElementById('pageSearchClear'),
+    wrap: document.getElementById('pageSearchInput') ? document.getElementById('pageSearchInput').closest('.toc-search') : null,
+    navBar: document.getElementById('searchNav'),
+    countLabel: document.getElementById('searchCount'),
+    prevBtn: document.getElementById('searchPrev'),
+    nextBtn: document.getElementById('searchNext'),
+  });
+
+  bindUI({
+    input: document.getElementById('heroFindInput'),
+    clearBtn: document.getElementById('heroFindClear'),
+    wrap: document.getElementById('heroFindWrap'),
+    navBar: document.getElementById('heroFindNav'),
+    countLabel: document.getElementById('heroSearchCount'),
+    prevBtn: document.getElementById('heroSearchPrev'),
+    nextBtn: document.getElementById('heroSearchNext'),
+  });
+
+  window.addEventListener('keydown', (e) => {
+    const focusedIsSearch = uiSets.some(ui => document.activeElement === ui.input);
+    const heroFindInput = document.getElementById('heroFindInput');
+    if(e.key === '/' && !focusedIsSearch && !e.metaKey && !e.ctrlKey && heroFindInput){
+      e.preventDefault();
+      heroFindInput.focus();
+    }
+  });
+})();
+
+// ===== Global topic search (jump to any other topic page from this page's hero) =====
+(function(){
+  const TOPICS = window.__NAV_TOPICS__ || [];
+  const CURRENT_HREF = window.__CURRENT_HREF__ || '';
+
+  const jumpInput = document.getElementById('topicJump');
+  const jumpWrap = document.getElementById('siteSearch');
+  const jumpClear = document.getElementById('jumpClear');
+  const dropdown = document.getElementById('jumpDropdown');
+  if(!jumpInput || !jumpWrap || !jumpClear || !dropdown) return;
+
+  let results = [];
+  let hlIndex = -1;
+
+  function render(query){
+    const q = query.trim().toLowerCase();
+    if(q === ''){
+      dropdown.classList.remove('show');
+      dropdown.innerHTML = '';
+      results = [];
+      hlIndex = -1;
+      return;
+    }
+
+    results = TOPICS.filter(t => t.title.toLowerCase().includes(q)).slice(0, 8);
+    hlIndex = -1;
+
+    if(results.length === 0){
+      dropdown.innerHTML = '<div class="s-empty">No topics match your search</div>';
+    } else {
+      dropdown.innerHTML = results.map((t, i) => {
+        const current = t.href === CURRENT_HREF ? ' (this page)' : '';
+        return `<a class="s-item" href="${t.href}" data-idx="${i}"><span class="s-num">${t.num}</span><span>${t.title}${current}</span></a>`;
+      }).join('');
+    }
+    dropdown.classList.add('show');
+  }
+
+  function setHighlight(i){
+    const items = dropdown.querySelectorAll('.s-item');
+    items.forEach(el => el.classList.remove('hl'));
+    if(i >= 0 && items[i]){
+      items[i].classList.add('hl');
+      items[i].scrollIntoView({ block:'nearest' });
+    }
+    hlIndex = i;
+  }
+
+  jumpInput.addEventListener('input', () => {
+    jumpWrap.classList.toggle('has-query', jumpInput.value.trim().length > 0);
+    render(jumpInput.value);
+  });
+
+  jumpInput.addEventListener('keydown', (e) => {
+    if(e.key === 'ArrowDown'){
+      e.preventDefault();
+      if(results.length) setHighlight((hlIndex + 1) % results.length);
+    } else if(e.key === 'ArrowUp'){
+      e.preventDefault();
+      if(results.length) setHighlight((hlIndex - 1 + results.length) % results.length);
+    } else if(e.key === 'Enter'){
+      if(hlIndex >= 0 && results[hlIndex]){
+        window.location.href = results[hlIndex].href;
+      } else if(results.length > 0){
+        window.location.href = results[0].href;
+      }
+    } else if(e.key === 'Escape'){
+      jumpInput.value = '';
+      jumpWrap.classList.remove('has-query');
+      render('');
+      jumpInput.blur();
+    }
+  });
+
+  jumpClear.addEventListener('click', () => {
+    jumpInput.value = '';
+    jumpWrap.classList.remove('has-query');
+    render('');
+    jumpInput.focus();
+  });
+
+  document.addEventListener('click', (e) => {
+    if(!jumpWrap.contains(e.target)){
+      dropdown.classList.remove('show');
+    }
+  });
+})();
+</script>
+</body>
+</html>
